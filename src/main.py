@@ -8,8 +8,9 @@ import json
 from random import choice
 
 with open('var.json', 'r') as f:
-    token = json.load(f)['TOKEN']
-    prefix = json.load(f)['PREFIX']
+    jsonData = json.load(f)
+token = jsonData['TOKEN']
+prefijo = jsonData['PREFIX']
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -57,7 +58,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
 
 
-client = commands.Bot(command_prefix=prefix)
+client = commands.Bot(command_prefix=prefijo)
 
 
 @client.event
